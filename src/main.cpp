@@ -19,42 +19,14 @@ HTTPClient http;  // 将HTTPClient对象移到全局范围
 
 // int llm = 3;    // 大模型选择参数:0:coze智能体，1：科大讯飞星火，2：通义千问
 
-// // 选哪个模型，就填哪个模型的参数
-// // coze 
-// String model1 = "noused";   
-// const char* doubao_apiKey = "pat_ToSRgRwWDqVyC6zlQxGT51ulImaJaedl75PJj70NPmrVlPTaa8S7Gcp2QnwawGBc";     
-// String apiUrl = "https://api.coze.cn/v3/chat";
-// String botid = "7436672384461340672";
-
-// // 通义千问大模型的参数
-// String model2 = "qwen-max";
-// const char* tongyi_apiKey = "sk-badb55f9746d4df798914cc0890ffa56";
-// String apiUrl_tongyi = "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions"; // 通义千问的API地址
-
-// // Chatgpt的参数
-// String model3 = "glm-4-flash";
-// const char* openai_apiKey = "sk-kfnSQzVByiKe7NwKE0EdF1Bf4a6a4e8690418fD926D2A2C3";
-// String apiUrl_chatgpt = "http://192.168.1.119:3000/v1/chat/completions"; // Chatgpt的API代理地址
-
-// // 讯飞stt和大模型服务的参数
-// String APPID = "929e5b78";                             // App ID,必填
-// String APISecret = "MjFlYWExMjg4YjY4YjRmYjQ5MzFmZGM2"; // API Secret，必填
-// String APIKey = "838a5edafca337dd8d5a3e22dbc4f261";    // API Key，必填
-
 String APPID = "7a55521c";                             // App ID,必填
 String APISecret = "YTY4MzJjOWNmNTVkOTA5MTFiOTUyMDA4"; // API Secret，必填
 String APIKey = "cc78d5339317e0c4cd518f54d6ce88c9";    // API Key，必填
 
 String appId1 = APPID;
-// String domain1 = "generalv3.5";    // 根据需要更改
-// String websockets_server = "ws://spark-api.xf-yun.com/v3.5/chat";   // 根据需要更改
 String websockets_server1 = "ws://iat-api.xfyun.cn/v2/iat";
-// // 讯飞stt语种设置
 String language = "zh_cn";     //zh_cn：中文（支持简单的英文识别）en_us：English
 
-// // 角色设定
-// String roleSet = "你的名字叫小爱，你的性格活泼开朗，是一个ai助手";
-// String roleSet1 = "";
 
 // // 定义一些全局变量
 bool ledstatus = true;          // 控制led闪烁
@@ -81,35 +53,22 @@ String Date = "";
 
 String askquestion = "";        //存储stt语音转文字信息，即用户的提问信息
 String Answer = "";             //存储llm回答，用于语音合成（较短的回答）
-// std::vector<String> subAnswers; //存储llm回答，用于语音合成（较长的回答，分段存储）
-// int subindex = 0;               //subAnswers的下标，用于voicePlay()
-// String text_temp = "";          //存储超出当前屏幕的文字，在下一屏幕显示
-// int loopcount = 0;      //对话次数计数器
-// int flag = 0;           //用来确保subAnswer1一定是大模型回答最开始的内容
+
 int conflag = 0;        //用于连续对话
 int await_flag = 1;     //待机标识
 int start_con = 0;      //标识是否开启了一轮对话
-// int image_show = 0;
 
 using namespace websockets; // 使用WebSocket命名空间
-// // 创建WebSocket客户端对象
-// WebsocketsClient webSocketClient;   //与llm通信
+
 WebsocketsClient webSocketClient1;  //与stt通信
 // // 创建音频对象
 Audio1 audio1;
 
-// DynamicJsonDocument gen_params(const char *appid, const char *domain);
-// DynamicJsonDocument gen_params_http(const char *model, const char *role_set);
-
-
 void processResponse(int status);
 void getText(String role, String content);
-// void checkLen();
-// void removeChars(const char *input, char *output, const char *removeSet);
+
 float calculateRMS(uint8_t *buffer, int bufferSize);
-// void ConnServer();
 void ConnServer1();
-// void voicePlay();
 int wifiConnect();
 void getTimeFromServer();
 String getUrl(String server, String host, String path, String date);
