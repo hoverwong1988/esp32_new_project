@@ -1,13 +1,9 @@
 #include "Web_Scr_set.h"
 
-// // 创建屏幕对象
-// TFT_eSPI tft = TFT_eSPI();  // 创建TFT对象
-// U8g2_for_TFT_eSPI u8g2;
-
 // AP模式的SSID和密码
 const char *ap_ssid = "ESP32-Setup";
 const char *ap_password = "12345678";
-// Web服务器和Preferences对象
+// Web服务器和Preferences对象 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
 AsyncWebServer server(80);
 Preferences preferences;
 
